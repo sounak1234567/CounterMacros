@@ -116,7 +116,7 @@ function App() {
           </button>
         </div>
       </main>
-      <div className="flex mx-96 px-auto mb-2">
+      <div className="flex lg:mx-96 mx-4 px-auto mb-2 mt-2">
         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mb-8 mr-2" onClick={() => {
           localStorage.removeItem("meals");
           setMeals([]);
