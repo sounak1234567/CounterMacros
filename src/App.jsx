@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import TDEE_Form from "./components/TDEE_Form";
 import Sidebar from "./components/Sidebar";
@@ -29,6 +29,23 @@ function App() {
     calories: goal
   }});
   const now = new Date();
+  const checkDate = () => {
+    const currentDate = new Date().toDateString();
+    const storedDate = localStorage.getItem('appActiveDate');
+
+    if (!storedDate) {
+      localStorage.setItem('appActiveDate', currentDate);
+    } else if (storedDate !== currentDate) {
+      localStorage.removeItem("meals");
+      setMeals([]);
+      window.location.reload();
+      localStorage.setItem('appActiveDate', currentDate);
+    }
+  }
+
+  useEffect(() => {
+    checkDate();
+  }, []);
 
   console.log(localStorage.getItem("meals"));
 
@@ -99,6 +116,23 @@ function App() {
           </button>
         </div>
       </main>
+      <div className="flex mx-96 px-auto mb-2">
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mb-8 mr-2" onClick={() => {
+          localStorage.removeItem("meals");
+          setMeals([]);
+          window.location.reload();
+        }}>
+          Reset
+        </button>
+        <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full mb-8 ml-2" onClick={() => {
+          localStorage.clear();
+          setMeals([]);
+          setWaterIntake(0);
+          window.location.reload();
+        }}>
+          Factory Reset
+        </button>
+      </div>
     </>
   );
 }

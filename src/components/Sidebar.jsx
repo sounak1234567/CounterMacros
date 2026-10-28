@@ -32,9 +32,9 @@ function Sidebar({ waterIntake, setWaterIntake, goals }) {
         {/* Total Calories Progress */}
         <div className="flex flex-col gap-2">
             <div className="flex justify-between text-sm">
-            <span className="text-slate-400">Calories Maintenance: {tdee} kcal</span>
+            <span className="text-slate-400">Calories Maintenance: {Math.round(tdee)} kcal</span>
             <span className="font-medium text-slate-100">
-                {macros.calories.current} / {macros.calories.goal} kcal
+                {Math.round(macros.calories.current)} / {Math.round(macros.calories.goal)} kcal
             </span>
             </div>
             <div className="bg-slate-800 h-3 rounded-full overflow-hidden md:w-full w-3/4">
@@ -56,7 +56,7 @@ function Sidebar({ waterIntake, setWaterIntake, goals }) {
             <div className="flex justify-between text-xs">
                 <span className="text-slate-400 font-medium">Protein</span>
                 <span className="text-slate-200">
-                {macros.protein.current}g / {macros.protein.goal}g
+                {Math.round(macros.protein.current)}g / {Math.round(macros.protein.goal)}g
                 </span>
             </div>
             <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
@@ -74,7 +74,7 @@ function Sidebar({ waterIntake, setWaterIntake, goals }) {
             <div className="flex justify-between text-xs">
                 <span className="text-slate-400 font-medium">Carbs</span>
                 <span className="text-slate-200">
-                {macros.carbs.current}g / {macros.carbs.goal}g
+                {Math.round(macros.carbs.current)}g / {Math.round(macros.carbs.goal)}g
                 </span>
             </div>
             <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
@@ -92,7 +92,7 @@ function Sidebar({ waterIntake, setWaterIntake, goals }) {
             <div className="flex justify-between text-xs">
                 <span className="text-slate-400 font-medium">Fats</span>
                 <span className="text-slate-200">
-                {macros.fats.current}g / {macros.fats.goal}g
+                {Math.round(macros.fats.current)}g / {Math.round(macros.fats.goal)}g
                 </span>
             </div>
             <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
